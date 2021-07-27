@@ -1,6 +1,7 @@
 package com.example.creea.persistance.user.entity;
 
 import com.example.creea.persistance.animal.entity.Animal;
+import com.example.creea.persistance.user.enums.UserRole;
 
 import javax.persistence.*;
 import java.util.ArrayList;
