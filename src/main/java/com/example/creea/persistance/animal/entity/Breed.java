@@ -1,5 +1,7 @@
 package com.example.creea.persistance.animal.entity;
 
+import com.example.creea.persistance.animal.enums.BreedName;
+
 import javax.persistence.*;
 
 @Entity

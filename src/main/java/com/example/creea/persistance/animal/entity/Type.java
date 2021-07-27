@@ -1,7 +1,8 @@
 package com.example.creea.persistance.animal.entity;
 
+import com.example.creea.persistance.animal.enums.TypeName;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Type {

@@ -1,5 +1,7 @@
 package com.example.creea.persistance.animal.entity;
 
+import com.example.creea.persistance.animal.enums.AnimalColor;
+import com.example.creea.persistance.animal.enums.AnimalGender;
 import com.example.creea.persistance.user.entity.User;
 
 import javax.persistence.*;
