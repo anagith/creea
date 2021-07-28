@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private long id;
+    private Long id;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private UserRole role;
     @Column(nullable = false)
     private String city;
@@ -27,15 +27,19 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Animal> animals = new ArrayList<>();
 
 
     public User() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

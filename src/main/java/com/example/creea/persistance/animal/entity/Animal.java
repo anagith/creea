@@ -11,19 +11,23 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private long id;
     private String name;
+
     @Column(nullable=false)
     private int age;
+
     private AnimalColor color;
     @Column(nullable=false)
     private AnimalGender gender;
     @Column(nullable=false)
     private String images;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Type type;
 
     public Animal() {
@@ -31,6 +35,10 @@ public class Animal {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

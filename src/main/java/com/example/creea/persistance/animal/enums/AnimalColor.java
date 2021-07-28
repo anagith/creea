@@ -11,5 +11,4 @@ public enum AnimalColor {
     CREAM,
     PINK,
     FAWN
-
 }

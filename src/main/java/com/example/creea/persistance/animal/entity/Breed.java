@@ -6,11 +6,14 @@ import javax.persistence.*;
 
 @Entity
 public class Breed {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private long id;
+    @Enumerated(EnumType.STRING)
     private BreedName name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Type type;
 
