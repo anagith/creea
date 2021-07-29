@@ -9,18 +9,19 @@ public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private long id;
+    private Long id;
+    @Enumerated(EnumType.STRING)
     private TypeName type;
-
-
     public Type() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public TypeName getType() {
         return type;
