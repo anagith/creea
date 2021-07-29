@@ -59,5 +59,4 @@ public class AnimalServiceImpl implements AnimalService {
         animalResponse.setUserResponse(userService.convertEntityToResponse(animal.getUser()));
         return animalResponse;
     }
-
 }

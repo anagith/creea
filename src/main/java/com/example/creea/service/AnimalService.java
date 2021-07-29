@@ -4,6 +4,12 @@ import com.example.creea.persistance.animal.entity.Animal;
 import com.example.creea.rest.model.AnimalRequest;
 import com.example.creea.rest.model.AnimalResponse;
 
+import com.example.creea.persistance.user.entity.User;
+import com.example.creea.rest.model.AnimalRequest;
+import com.example.creea.rest.model.AnimalResponse;
+import org.springframework.stereotype.Service;
+
+@Service
 public interface AnimalService {
 
     Animal create(AnimalRequest animalRequest);
