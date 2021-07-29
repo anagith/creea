@@ -16,6 +16,7 @@ public class User {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private UserRole role;
     @Column(nullable = false)
     private String city;

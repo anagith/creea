@@ -2,10 +2,13 @@ package com.example.creea.service.impl;
 
 import com.example.creea.persistance.user.UserRepository;
 import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistance.user.enums.UserRole;
 import com.example.creea.rest.model.UserRequest;
 import com.example.creea.rest.model.UserResponse;
 import com.example.creea.service.AnimalService;
 import com.example.creea.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,9 +21,25 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public User convertRequestToEntity(UserRequest userRequest) {
+        User user = new User();
+        user.setName(userRequest.getName());
+        user.setCity(userRequest.getCity());
+        user.setAddress(userRequest.getAddress());
+        user.setPhone(userRequest.getPhone());
+        user.setEmail(userRequest.getEmail());
+        user.setPassword(new BCryptPasswordEncoder().encode(userRequest.getPassword()));
+        user.setRole(UserRole.CUSTOMER);
+        return user;
+
+    }
+
     @Override
     public User create(UserRequest userRequest) {
-        return null;
+
+        User user = convertRequestToEntity(userRequest);
+        return userRepository.save(user);
+
     }
 
     @Override
