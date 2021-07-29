@@ -18,10 +18,11 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @DeleteMapping("/{userId}/{animalId}")
     public void deleteAnimal(@PathVariable Long userId, @PathVariable Long animalId) {
         animalService.delete(userId, animalId);
     }
+
+
 
 }
