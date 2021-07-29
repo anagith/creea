@@ -15,7 +15,7 @@ public class User {
     private Long id;
     @Column(nullable = false)
     private String name;
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private UserRole role;
     @Column(nullable = false)
     private String city;

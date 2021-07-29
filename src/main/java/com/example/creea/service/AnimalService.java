@@ -7,7 +7,10 @@ import com.example.creea.rest.model.AnimalResponse;
 public interface AnimalService {
 
     Animal create(AnimalRequest animalRequest);
+    void delete(Long userId, Long animalId);
+    Animal get(Long animalId);
+
+
     AnimalResponse convertEntityToResponse(Animal animal);
     Animal convertRequestToEntity(AnimalRequest animalRequest);
-
 }

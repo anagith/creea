@@ -6,9 +6,7 @@ import com.example.creea.rest.model.AnimalResponse;
 import com.example.creea.service.AnimalService;
 import com.example.creea.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -20,9 +18,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/{userId}/animal")
-    public AnimalResponse createAnimal(@PathVariable Long userId, @RequestBody AnimalRequest request){
-        return animalService.convertEntityToResponse(animalService.create(request));
+
+    @DeleteMapping("/{userId}/{animalId}")
+    public void deleteAnimal(@PathVariable Long userId, @PathVariable Long animalId) {
+        animalService.delete(userId, animalId);
     }
 
 }
