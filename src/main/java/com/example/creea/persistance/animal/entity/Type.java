@@ -15,6 +15,10 @@ public class Type {
     public Type() {
     }
 
+    public Type(TypeName type) {
+        this.type = type;
+    }
+
     public Long getId() {
         return id;
     }

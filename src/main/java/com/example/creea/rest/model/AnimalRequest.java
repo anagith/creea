@@ -14,8 +14,8 @@ public class AnimalRequest {
     private int age;
     private String colour;
     private String gender;
-    private Long userId;
-    private Long typeId;
+    private String type;
+    private String breed;
 
     public AnimalRequest(){}
 
@@ -51,20 +51,19 @@ public class AnimalRequest {
         this.gender = gender;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getType() {
+        return type;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Long getTypeId() {
-        return typeId;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setTypeId(Long typeId) {
-        this.typeId = typeId;
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
-
 }

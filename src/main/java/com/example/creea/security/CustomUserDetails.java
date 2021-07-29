@@ -13,11 +13,21 @@ public class CustomUserDetails implements UserDetails {
     private String username;
     private String password;
     private String role;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public CustomUserDetails(User user) {
         username = user.getName();
         password = user.getPassword();
         role = user.getRole().name();
+        id = user.getId();
     }
 
     @Override

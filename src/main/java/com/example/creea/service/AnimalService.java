@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AnimalService {
 
-    Animal create(AnimalRequest animalRequest);
+    Animal create(AnimalRequest animalRequest,Long userId);
     void delete(Long userId, Long animalId);
     Animal get(Long animalId);
-
-
     AnimalResponse convertEntityToResponse(Animal animal);
-    Animal convertRequestToEntity(AnimalRequest animalRequest);
+    Animal convertRequestToEntity(AnimalRequest animalRequest,Long userId);
 }

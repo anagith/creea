@@ -20,9 +20,14 @@ public class Breed {
     public Breed() {
     }
 
+    public Breed(BreedName name, Type type) {
+        this.name = name;
+        this.type = type;
+    }
+/*
     public long getId() {
         return id;
-    }
+    }*/
 
     public BreedName getName() {
         return name;
