@@ -19,23 +19,23 @@ public class Animal {
     private int age;
 
     private AnimalColor color;
-    @Column(nullable=false)
+    //@Column(nullable=false)
     private AnimalGender gender;
-    @Column(nullable=false)
+   // @Column(nullable=false)
     private String images;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Type type;
+    private Breed breed;
 
     public Animal() {
     }
 
-    public long getId() {
+    /*public long getId() {
         return id;
-    }
+    }*/
 
     public void setId(Long id) {
         this.id = id;
@@ -89,11 +89,11 @@ public class Animal {
         this.user = user;
     }
 
-    public Type getType() {
-        return type;
+    public Breed getBreed() {
+        return breed;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setBreed(Breed breed) {
+        this.breed = breed;
     }
 }
