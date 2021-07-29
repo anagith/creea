@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
         userResponse.setName(user.getName());
         userResponse.setCity(user.getCity());
         userResponse.setAddress(user.getAddress());
+        userResponse.setPhone(user.getPhone());
         userResponse.setEmail(user.getEmail());
         return userResponse;
     }
