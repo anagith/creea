@@ -14,6 +14,7 @@ import javax.annotation.security.RolesAllowed;
 @RestController
 public class AnimalController {
 
+
     private final AnimalService animalService;
 
     public AnimalController(AnimalService animalService) {
