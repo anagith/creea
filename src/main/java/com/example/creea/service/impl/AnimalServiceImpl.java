@@ -31,7 +31,6 @@ public class AnimalServiceImpl implements AnimalService {
         this.typeRepository = typeRepository;
     }
 
-
     @Override
     public Animal create(AnimalRequest animalRequest,Long userId) {
         Animal animal = convertRequestToEntity(animalRequest,userId);
@@ -66,6 +65,7 @@ public class AnimalServiceImpl implements AnimalService {
 
     public AnimalResponse convertEntityToResponse(Animal animal) {
         AnimalResponse animalResponse = new AnimalResponse();
+        animalResponse.setId(animal.getId());
         animalResponse.setName(animal.getName());
         animalResponse.setAge(animal.getAge());
         animalResponse.setColor(String.valueOf(animal.getColor()));
