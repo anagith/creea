@@ -1,12 +1,21 @@
 package com.example.creea.rest.model;
 
 public class UserRequest {
+    private String userName;
     private String name;
     private String city;
     private String address;
     private String phone;
     private String email;
     private String password;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public void setPassword(String password) {
         this.password = password;

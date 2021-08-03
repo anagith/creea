@@ -24,7 +24,7 @@ public class CustomUserDetails implements UserDetails {
     }
 
     public CustomUserDetails(User user) {
-        username = user.getName();
+        username = user.getUserName();
         password = user.getPassword();
         role = user.getRole().name();
         id = user.getId();

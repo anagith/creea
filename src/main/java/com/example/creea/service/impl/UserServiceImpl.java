@@ -23,15 +23,20 @@ public class UserServiceImpl implements UserService {
 
     public User convertRequestToEntity(UserRequest userRequest) {
         User user = new User();
+        setUserPropertiesFromRequest(userRequest, user);
+        user.setRole(UserRole.CUSTOMER);
+        return user;
+
+    }
+
+    private void setUserPropertiesFromRequest(UserRequest userRequest, User user) {
         user.setName(userRequest.getName());
+        user.setUserName(userRequest.getUserName());
         user.setCity(userRequest.getCity());
         user.setAddress(userRequest.getAddress());
         user.setPhone(userRequest.getPhone());
         user.setEmail(userRequest.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(userRequest.getPassword()));
-        user.setRole(UserRole.CUSTOMER);
-        return user;
-
     }
 
     @Override
@@ -58,4 +63,18 @@ public class UserServiceImpl implements UserService {
         userResponse.setEmail(user.getEmail());
         return userResponse;
     }
+
+    @Override
+    public User update(Long id, UserRequest userRequest) {
+        User user = userRepository.getById(id);
+        setUserPropertiesFromRequest(userRequest, user);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.delete(userRepository.getById(id));
+    }
+
+
 }
