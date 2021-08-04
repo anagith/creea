@@ -6,6 +6,8 @@ import com.example.creea.persistance.animal.enums.BreedName;
 import com.example.creea.persistance.animal.enums.TypeName;
 import com.example.creea.persistance.animal.repo.BreedRepository;
 import com.example.creea.persistance.animal.repo.TypeRepository;
+import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistance.user.enums.UserRole;
 import com.example.creea.rest.model.AnimalRequest;
 import com.example.creea.rest.model.AnimalResponse;
 import com.example.creea.security.CustomUserDetails;
@@ -34,7 +36,7 @@ public class AnimalController {
         AnimalResponse animalResponse = animalService.convertEntityToResponse(animalService.create(request,customUserDetails.getId()));
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
     public void add(){
 
         Type save1 = typeRepo.save(new Type(TypeName.DOG));
