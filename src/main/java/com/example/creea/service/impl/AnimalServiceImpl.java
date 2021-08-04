@@ -52,14 +52,27 @@ public class AnimalServiceImpl implements AnimalService {
 
     public Animal convertRequestToEntity(AnimalRequest animalRequest,Long userId) {
         Animal animal = new Animal();
+        setAnimalPropertiesFromRequest(animalRequest, animal);
+        animal.setUser(userService.getUserById(userId));
+        return animal;
+    }
+
+    private void setAnimalPropertiesFromRequest(AnimalRequest animalRequest, Animal animal) {
         animal.setName(animalRequest.getName());
         animal.setAge(animalRequest.getAge());
         animal.setColor(AnimalColor.valueOf(animalRequest.getColour()));
         animal.setGender(AnimalGender.valueOf(animalRequest.getGender()));
         animal.setBreed(breedRepository.findBreedByName(BreedName.valueOf(animalRequest.getBreed())));
         animal.getBreed().setType(typeRepository.findTypeByType(TypeName.valueOf(animalRequest.getType())));
-       animal.setUser(userService.getUserById(userId));
-        return animal;
+    }
+
+    @Override
+    public Animal update(Long userId, Long animalId, AnimalRequest animalRequest) {
+        Animal animal = animalRepository.getById(animalId);
+        if (animal.getUser().getId().equals(userId)) {
+            setAnimalPropertiesFromRequest(animalRequest, animal);
+        }
+        return animalRepository.save(animal);
     }
 
 

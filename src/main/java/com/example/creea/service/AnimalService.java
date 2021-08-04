@@ -17,4 +17,6 @@ public interface AnimalService {
     Animal get(Long animalId);
     AnimalResponse convertEntityToResponse(Animal animal);
     Animal convertRequestToEntity(AnimalRequest animalRequest,Long userId);
+
+    Animal update(Long id, Long animalId, AnimalRequest animalRequest);
 }
