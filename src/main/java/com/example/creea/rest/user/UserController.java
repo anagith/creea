@@ -64,17 +64,5 @@ public class UserController {
         userService.delete(customUserDetails.getId());
         return new ResponseEntity<>("Successfully deleted!!!", HttpStatus.OK);
     }
-    @RequestMapping(value = "/add/admin",method = RequestMethod.POST)
-    public void createAdmin(){
-        User user = new User();
-        user.setName("Admin");
-        user.setRole(UserRole.ADMIN);
-        user.setPhone("12345678");
-        user.setPassword(new BCryptPasswordEncoder().encode("admin"));
-        user.setUserName("admin");
-        user.setEmail("admin@gmail.com");
-        user.setAddress("dfghj");
-        user.setCity("Yerevan");
-        userService.save(user);
-    }
+
 }
