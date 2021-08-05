@@ -36,19 +36,6 @@ public class AnimalController {
         AnimalResponse animalResponse = animalService.convertEntityToResponse(animalService.create(request,customUserDetails.getId()));
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public void add(){
-
-        Type save1 = typeRepo.save(new Type(TypeName.DOG));
-        Type save2 = typeRepo.save( new Type(TypeName.CAT));
-        Type save3 = typeRepo.save(new Type(TypeName.BIRD));
-        Type save4 = typeRepo.save(new Type(TypeName.FISH));
-
-        breedRepository.save(new Breed(BreedName.DALMATIAN,save1));
-        breedRepository.save(new Breed(BreedName.DOBERMAN,save1));
-        breedRepository.save(new Breed(BreedName.SIAMESE,save2));
-
-    }
 
     @RequestMapping(value = "/{animalId}",method = RequestMethod.GET)
     public ResponseEntity<AnimalResponse> getAnimal(@PathVariable Long animalId) {
