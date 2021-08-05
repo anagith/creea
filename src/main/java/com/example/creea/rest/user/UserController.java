@@ -53,6 +53,11 @@ public class UserController {
         return new ResponseEntity<>("Successfully deleted!!!",HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/admin/{animalId}", method =RequestMethod.DELETE )
+    public ResponseEntity<String> AdminDeleteAnimal(@PathVariable Long animalId){
+        animalService.deleteByAdmin(animalId);
+        return new ResponseEntity<>("Successfully deleted!!!",HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/user", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteUser(@AuthenticationPrincipal CustomUserDetails customUserDetails) {

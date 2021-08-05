@@ -7,7 +7,7 @@ public class AnimalResponse {
     private String type;
     private int age;
     private String color;
-private String breed;
+    private String breed;
 
     public AnimalResponse() {
     }

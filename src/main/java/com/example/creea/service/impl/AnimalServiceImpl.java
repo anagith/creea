@@ -1,19 +1,17 @@
 package com.example.creea.service.impl;
 
-import com.example.creea.persistance.animal.enums.BreedName;
-import com.example.creea.persistance.animal.enums.TypeName;
-import com.example.creea.persistance.animal.repo.AnimalRepository;
 import com.example.creea.persistance.animal.entity.Animal;
 import com.example.creea.persistance.animal.enums.AnimalColor;
 import com.example.creea.persistance.animal.enums.AnimalGender;
+import com.example.creea.persistance.animal.enums.BreedName;
+import com.example.creea.persistance.animal.enums.TypeName;
+import com.example.creea.persistance.animal.repo.AnimalRepository;
 import com.example.creea.persistance.animal.repo.BreedRepository;
 import com.example.creea.persistance.animal.repo.TypeRepository;
 import com.example.creea.rest.model.AnimalRequest;
 import com.example.creea.rest.model.AnimalResponse;
-import com.example.creea.security.CustomUserDetails;
 import com.example.creea.service.AnimalService;
 import com.example.creea.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,8 +30,8 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public Animal create(AnimalRequest animalRequest,Long userId) {
-        Animal animal = convertRequestToEntity(animalRequest,userId);
+    public Animal create(AnimalRequest animalRequest, Long userId) {
+        Animal animal = convertRequestToEntity(animalRequest, userId);
         return animalRepository.save(animal);
     }
 
@@ -47,10 +45,10 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     public Animal get(Long animalId) {
-       return animalRepository.getById(animalId);
+        return animalRepository.getById(animalId);
     }
 
-    public Animal convertRequestToEntity(AnimalRequest animalRequest,Long userId) {
+    public Animal convertRequestToEntity(AnimalRequest animalRequest, Long userId) {
         Animal animal = new Animal();
         setAnimalPropertiesFromRequest(animalRequest, animal);
         animal.setUser(userService.getUserById(userId));
@@ -73,6 +71,11 @@ public class AnimalServiceImpl implements AnimalService {
             setAnimalPropertiesFromRequest(animalRequest, animal);
         }
         return animalRepository.save(animal);
+    }
+
+    @Override
+    public void deleteByAdmin(Long animalId) {
+        animalRepository.deleteById(animalId);
     }
 
 

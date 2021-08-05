@@ -5,10 +5,8 @@ import com.example.creea.persistance.user.entity.User;
 import com.example.creea.persistance.user.enums.UserRole;
 import com.example.creea.rest.model.UserRequest;
 import com.example.creea.rest.model.UserResponse;
-import com.example.creea.service.AnimalService;
 import com.example.creea.service.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
