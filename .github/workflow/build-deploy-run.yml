@@ -14,7 +14,7 @@ jobs:
   - name: Build package with Maven
     run: mvn -B package --file pom.xml -Dmaven.test.skip=true
 
-  - name: Stop Test App API on server
+  - name: Stop CREEA App API on server
     uses: appleboy/ssh-action@master
     with:
       host: ${{ secrets.REMOTE_IP }}
