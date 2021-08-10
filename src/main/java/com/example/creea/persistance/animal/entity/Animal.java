@@ -1,5 +1,6 @@
 package com.example.creea.persistance.animal.entity;
 
+import com.example.creea.persistance.animal.enums.AnimalAge;
 import com.example.creea.persistance.animal.enums.AnimalColor;
 import com.example.creea.persistance.animal.enums.AnimalGender;
 import com.example.creea.persistance.user.entity.User;
@@ -12,16 +13,17 @@ public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
 
     @Column(nullable=false)
-    private int age;
+    @Enumerated(EnumType.STRING)
+    private AnimalAge age;
 
     private AnimalColor color;
-    //@Column(nullable=false)
+    @Column(nullable=false)
+
     private AnimalGender gender;
-   // @Column(nullable=false)
+    //@Column(nullable=false)
     private String images;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -49,11 +51,11 @@ public class Animal {
         this.name = name;
     }
 
-    public int getAge() {
+    public AnimalAge getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(AnimalAge age) {
         this.age = age;
     }
 

@@ -5,7 +5,7 @@ public class AnimalResponse {
     private String name;
     private UserResponse userResponse;
     private String type;
-    private int age;
+    private String age;
     private String color;
     private String breed;
 
@@ -44,11 +44,11 @@ public class AnimalResponse {
         this.type = type;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

@@ -1,7 +1,7 @@
 create table animal
 (
     id       bigint  not null auto_increment,
-    age      integer not null,
+    age      varchar(255) not null,
     color    integer,
     gender   integer,
     images   varchar(255),

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 
 public class AnimalRequest {
     private String name;
-    private int age;
+    private String  age;
     private String colour;
     private String gender;
     private String type;
@@ -27,11 +27,11 @@ public class AnimalRequest {
         this.name = name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(final int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

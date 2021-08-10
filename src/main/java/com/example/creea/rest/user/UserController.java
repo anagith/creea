@@ -1,18 +1,14 @@
 package com.example.creea.rest.user;
 
-import com.example.creea.persistance.user.entity.User;
-import com.example.creea.persistance.user.enums.UserRole;
-import com.example.creea.rest.model.AnimalRequest;
-import com.example.creea.rest.model.AnimalResponse;
-import com.example.creea.rest.model.UserRequest;
-import com.example.creea.rest.model.UserResponse;
+import com.example.creea.rest.model.*;
 import com.example.creea.security.CustomUserDetails;
 import com.example.creea.service.AnimalService;
 import com.example.creea.service.UserService;
+import com.example.creea.service.criteria.AnimalFilterModel;
+import com.example.creea.service.criteria.AnimalPage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -38,7 +34,7 @@ public class UserController {
 
     @RequestMapping(value = "/animal/{animalId}", method = RequestMethod.PUT)
     public ResponseEntity<AnimalResponse> updateAnimal(@AuthenticationPrincipal CustomUserDetails customUserDetails, @PathVariable Long animalId, @RequestBody AnimalRequest animalRequest) {
-        AnimalResponse animalResponse = animalService.convertEntityToResponse(animalService.update(customUserDetails.getId(), animalId, animalRequest));
+        AnimalResponse animalResponse = animalService.convertEntityToDetailResponse(animalService.update(customUserDetails.getId(), animalId, animalRequest));
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
 
@@ -64,5 +60,18 @@ public class UserController {
         userService.delete(customUserDetails.getId());
         return new ResponseEntity<>("Successfully deleted!!!", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/filter",method = RequestMethod.POST)
+    public ResponseEntity<AnimalSearchResponse> filterAnimal(
+            @RequestParam int pageSize,
+            @RequestParam int currentPage,
+            @RequestParam String sortField,
+            @RequestParam String sortDirection,
+            @RequestBody AnimalFilterModel animalFilterModel){
+        AnimalPage animalPage = new AnimalPage(currentPage,pageSize,sortField,sortDirection);
+        return new ResponseEntity<>(animalService.filter(animalPage,animalFilterModel),
+                HttpStatus.OK);
+    }
+
 
 }
