@@ -79,7 +79,7 @@ public class Animal {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImage(String images) {
         this.images = images;
     }
 

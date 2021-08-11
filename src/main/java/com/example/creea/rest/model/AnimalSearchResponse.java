@@ -3,16 +3,16 @@ package com.example.creea.rest.model;
 import java.util.List;
 
 public class AnimalSearchResponse {
-    private List<AnimalShortResponse> animals;
+    private List<AnimalResponse> animals;
     private long totalCount;
     private long totalPage;
     private long currentPage;
 
-    public List<AnimalShortResponse> getAnimals() {
+    public List<AnimalResponse> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(List<AnimalShortResponse> animals) {
+    public void setAnimals(List<AnimalResponse> animals) {
         this.animals = animals;
     }
 
@@ -47,7 +47,6 @@ public class AnimalSearchResponse {
     public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
     }
-
 
     public void setCurrentPage(int currentPage) {
         this.currentPage = currentPage;

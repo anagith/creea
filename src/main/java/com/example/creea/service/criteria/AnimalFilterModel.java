@@ -2,7 +2,6 @@ package com.example.creea.service.criteria;
 
 
 public class AnimalFilterModel {
-    private String type;
     private String age;
     private String color;
     private String gender;
@@ -12,14 +11,6 @@ public class AnimalFilterModel {
 
     public String getAge() {
         return age;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public void setAge(String age) {

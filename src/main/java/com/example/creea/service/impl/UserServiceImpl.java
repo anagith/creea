@@ -50,7 +50,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.getById(id);
     }
 
-
     @Override
     public UserResponse convertEntityToResponse(User user) {
         UserResponse userResponse = new UserResponse();
@@ -78,6 +77,5 @@ public class UserServiceImpl implements UserService {
     public void save(User user) {
         userRepository.save(user);
     }
-
 
 }

@@ -16,6 +16,7 @@ public class AnimalRequest {
     private String gender;
     private String type;
     private String breed;
+    private String image;
 
     public AnimalRequest(){}
 
@@ -53,6 +54,14 @@ public class AnimalRequest {
 
     public String getType() {
         return type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setType(String type) {
