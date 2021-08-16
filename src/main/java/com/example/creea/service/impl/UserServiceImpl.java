@@ -1,8 +1,8 @@
 package com.example.creea.service.impl;
 
-import com.example.creea.persistance.user.UserRepository;
-import com.example.creea.persistance.user.entity.User;
-import com.example.creea.persistance.user.enums.UserRole;
+import com.example.creea.persistence.user.UserRepository;
+import com.example.creea.persistence.user.entity.User;
+import com.example.creea.persistence.user.enums.UserRole;
 import com.example.creea.rest.model.request.UserRequest;
 import com.example.creea.rest.model.response.UserResponse;
 import com.example.creea.service.UserService;

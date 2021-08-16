@@ -1,4 +1,4 @@
-package com.example.creea.persistance.user.enums;
+package com.example.creea.persistence.user.enums;
 
 public enum UserRole {
     ADMIN,

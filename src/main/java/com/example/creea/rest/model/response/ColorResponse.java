@@ -1,7 +1,5 @@
 package com.example.creea.rest.model.response;
 
-import com.example.creea.persistance.animal.enums.AnimalColor;
-
 import java.util.ArrayList;
 import java.util.List;
 

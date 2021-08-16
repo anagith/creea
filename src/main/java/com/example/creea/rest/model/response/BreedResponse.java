@@ -2,8 +2,6 @@ package com.example.creea.rest.model.response;
 
 
 
-import com.example.creea.persistance.animal.enums.BreedName;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.example.creea.persistance.animal.repo;
+package com.example.creea.persistence.animal.repo;
 
-import com.example.creea.persistance.animal.entity.Breed;
-import com.example.creea.persistance.animal.entity.Type;
-import com.example.creea.persistance.animal.enums.BreedName;
+import com.example.creea.persistence.animal.entity.Breed;
+import com.example.creea.persistence.animal.entity.Type;
+import com.example.creea.persistence.animal.enums.BreedName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

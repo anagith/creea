@@ -1,9 +1,9 @@
-package com.example.creea.persistance.animal.repo;
+package com.example.creea.persistence.animal.repo;
 
-import com.example.creea.persistance.animal.entity.Animal;
-import com.example.creea.persistance.animal.entity.Breed;
-import com.example.creea.persistance.animal.entity.Type;
-import com.example.creea.persistance.animal.enums.*;
+import com.example.creea.persistence.animal.entity.Animal;
+import com.example.creea.persistence.animal.entity.Breed;
+import com.example.creea.persistence.animal.entity.Type;
+import com.example.creea.persistence.animal.enums.*;
 import com.example.creea.rest.model.request.AnimalTypeRequest;
 import com.example.creea.service.criteria.AnimalFilterModel;
 import com.example.creea.service.criteria.AnimalPage;

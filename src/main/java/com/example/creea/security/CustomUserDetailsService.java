@@ -1,7 +1,7 @@
 package com.example.creea.security;
 
-import com.example.creea.persistance.user.UserRepository;
-import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistence.user.UserRepository;
+import com.example.creea.persistence.user.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

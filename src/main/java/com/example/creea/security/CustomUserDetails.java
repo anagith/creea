@@ -1,6 +1,6 @@
 package com.example.creea.security;
 
-import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistence.user.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

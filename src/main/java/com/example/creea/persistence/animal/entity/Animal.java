@@ -1,9 +1,9 @@
-package com.example.creea.persistance.animal.entity;
+package com.example.creea.persistence.animal.entity;
 
-import com.example.creea.persistance.animal.enums.AnimalAge;
-import com.example.creea.persistance.animal.enums.AnimalColor;
-import com.example.creea.persistance.animal.enums.AnimalGender;
-import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistence.animal.enums.AnimalAge;
+import com.example.creea.persistence.animal.enums.AnimalColor;
+import com.example.creea.persistence.animal.enums.AnimalGender;
+import com.example.creea.persistence.user.entity.User;
 
 import javax.persistence.*;
 

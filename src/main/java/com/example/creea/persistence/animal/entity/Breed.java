@@ -1,6 +1,6 @@
-package com.example.creea.persistance.animal.entity;
+package com.example.creea.persistence.animal.entity;
 
-import com.example.creea.persistance.animal.enums.BreedName;
+import com.example.creea.persistence.animal.enums.BreedName;
 
 import javax.persistence.*;
 

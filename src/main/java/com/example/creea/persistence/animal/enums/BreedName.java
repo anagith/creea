@@ -1,4 +1,4 @@
-package com.example.creea.persistance.animal.enums;
+package com.example.creea.persistence.animal.enums;
 
 public enum BreedName {
     SPHYNX,

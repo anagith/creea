@@ -1,6 +1,6 @@
 package com.example.creea.service;
 
-import com.example.creea.persistance.user.entity.User;
+import com.example.creea.persistence.user.entity.User;
 import com.example.creea.rest.model.request.UserRequest;
 import com.example.creea.rest.model.response.UserResponse;
 

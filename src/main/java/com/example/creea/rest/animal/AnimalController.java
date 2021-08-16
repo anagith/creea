@@ -1,7 +1,7 @@
 package com.example.creea.rest.animal;
 
-import com.example.creea.persistance.animal.repo.BreedRepository;
-import com.example.creea.persistance.animal.repo.TypeRepository;
+import com.example.creea.persistence.animal.repo.BreedRepository;
+import com.example.creea.persistence.animal.repo.TypeRepository;
 import com.example.creea.rest.model.request.AnimalRequest;
 import com.example.creea.rest.model.response.AnimalDetailResponse;
 import com.example.creea.security.CustomUserDetails;

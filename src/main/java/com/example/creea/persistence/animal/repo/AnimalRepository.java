@@ -1,9 +1,7 @@
-package com.example.creea.persistance.animal.repo;
+package com.example.creea.persistence.animal.repo;
 
-import com.example.creea.persistance.animal.entity.Animal;
-import com.example.creea.service.criteria.AnimalFilterModel;
+import com.example.creea.persistence.animal.entity.Animal;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
