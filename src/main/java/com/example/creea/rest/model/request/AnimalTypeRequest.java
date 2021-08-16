@@ -1,4 +1,4 @@
-package com.example.creea.rest.model;
+package com.example.creea.rest.model.request;
 
 public class AnimalTypeRequest {
     private String type;

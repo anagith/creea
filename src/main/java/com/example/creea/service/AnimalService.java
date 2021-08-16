@@ -1,15 +1,17 @@
 package com.example.creea.service;
 
 import com.example.creea.persistance.animal.entity.Animal;
-import com.example.creea.rest.model.AnimalSearchResponse;
-import com.example.creea.rest.model.AnimalTypeRequest;
+import com.example.creea.persistance.animal.entity.Breed;
+import com.example.creea.rest.model.request.AnimalRequest;
+import com.example.creea.rest.model.request.AnimalTypeRequest;
+import com.example.creea.rest.model.response.*;
 import com.example.creea.security.CustomUserDetails;
 import com.example.creea.service.criteria.AnimalFilterModel;
-import com.example.creea.rest.model.AnimalRequest;
-import com.example.creea.rest.model.AnimalDetailResponse;
 import com.example.creea.service.criteria.AnimalPage;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Service
 public interface AnimalService {
@@ -20,7 +22,11 @@ public interface AnimalService {
 
     Animal get(Long animalId);
 
+    UserAnimalsResponse getAnimals(Long userId);
+
     AnimalDetailResponse convertEntityToDetailResponse(Animal animal);
+
+    AnimalResponseForOwner convertEntityToResponseForOwner(Animal animal);
 
     Animal convertRequestToEntity(AnimalRequest animalRequest, Long userId);
 
@@ -35,4 +41,15 @@ public interface AnimalService {
     String getLink(MultipartFile filePart);
 
     AnimalSearchResponse searchByType(AnimalPage animalPage, AnimalTypeRequest animalTypeRequest);
+
+    List<Breed> searchBreedsByType(String type);
+
+    BreedResponse convertBreedToBreedResponse(List<Breed> breeds);
+
+    ColorResponse getColors();
+
+    AgeResponse getAges();
+
+    GenderResponse getGenders();
+
 }

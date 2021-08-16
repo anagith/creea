@@ -1,4 +1,4 @@
-package com.example.creea.rest.model;
+package com.example.creea.rest.model.request;
 
 import com.example.creea.persistance.animal.entity.Type;
 import com.example.creea.persistance.animal.enums.AnimalColor;

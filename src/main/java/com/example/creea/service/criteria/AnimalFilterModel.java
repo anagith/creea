@@ -6,7 +6,6 @@ public class AnimalFilterModel {
     private String color;
     private String gender;
     private String breed;
-    private String term;
     private String orderBy;
 
     public String getAge() {
@@ -23,14 +22,6 @@ public class AnimalFilterModel {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public String getTerm() {
-        return term;
-    }
-
-    public void setTerm(String term) {
-        this.term = term;
     }
 
     public String getOrderBy() {

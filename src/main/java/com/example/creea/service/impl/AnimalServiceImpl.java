@@ -9,12 +9,16 @@ import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.example.creea.persistance.animal.entity.Animal;
+import com.example.creea.persistance.animal.entity.Breed;
+import com.example.creea.persistance.animal.entity.Type;
 import com.example.creea.persistance.animal.enums.*;
 import com.example.creea.persistance.animal.repo.AnimalCriteriaRepository;
 import com.example.creea.persistance.animal.repo.AnimalRepository;
 import com.example.creea.persistance.animal.repo.BreedRepository;
 import com.example.creea.persistance.animal.repo.TypeRepository;
-import com.example.creea.rest.model.*;
+import com.example.creea.rest.model.request.AnimalRequest;
+import com.example.creea.rest.model.request.AnimalTypeRequest;
+import com.example.creea.rest.model.response.*;
 import com.example.creea.security.CustomUserDetails;
 import com.example.creea.service.criteria.AnimalFilterModel;
 import com.example.creea.service.AnimalService;
@@ -27,6 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 
@@ -63,6 +69,15 @@ public class AnimalServiceImpl implements AnimalService {
     @Override
     public Animal get(Long animalId) {
         return animalRepository.getById(animalId);
+    }
+
+    @Override
+    public UserAnimalsResponse getAnimals(Long userId) {
+        List<Animal> animalsByUserId = animalRepository.getAnimalsByUserId(userId);
+        List<AnimalResponseForOwner> animalResponseForOwners = convertAnimalsToAnimalResponse(animalsByUserId);
+        UserAnimalsResponse userAnimalsResponse = new UserAnimalsResponse();
+        userAnimalsResponse.setAnimals(animalResponseForOwners);
+        return userAnimalsResponse;
     }
 
     public Animal convertRequestToEntity(AnimalRequest animalRequest, Long userId) {
@@ -114,7 +129,7 @@ public class AnimalServiceImpl implements AnimalService {
     @Override
     public Animal uploadImage(String link, Long id, CustomUserDetails customUserDetails) {
         Animal animal = animalRepository.getById(id);
-        if(customUserDetails.getId().equals(animal.getUser().getId())){
+        if (customUserDetails.getId().equals(animal.getUser().getId())) {
             animal.setImage(link);
             animalRepository.save(animal);
             return animal;
@@ -122,7 +137,7 @@ public class AnimalServiceImpl implements AnimalService {
         return null;
     }
 
-    public String getLink(MultipartFile filePart){
+    public String getLink(MultipartFile filePart) {
         String accessKey = "AKIATU4YY23K7LINVEHL";
         String secretKey = "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";
         String key = "media/" + filePart.getOriginalFilename();
@@ -148,7 +163,7 @@ public class AnimalServiceImpl implements AnimalService {
     }
 
     @Override
-    public AnimalSearchResponse searchByType(AnimalPage animalPage, AnimalTypeRequest animalTypeRequest){
+    public AnimalSearchResponse searchByType(AnimalPage animalPage, AnimalTypeRequest animalTypeRequest) {
         Page<Animal> page = animalCriteriaRepository.findAllWithType(animalPage, animalTypeRequest);
         ArrayList<AnimalResponse> responses = new ArrayList<>();
         for (Animal animal : page.getContent()) {
@@ -162,6 +177,53 @@ public class AnimalServiceImpl implements AnimalService {
         return animalSearchResponse;
     }
 
+    @Override
+    public List<Breed> searchBreedsByType(String type) {
+        Type typeByType = typeRepository.findTypeByType(TypeName.valueOf(type));
+        return breedRepository.findBreedsByType(typeByType);
+    }
+
+    public BreedResponse convertBreedToBreedResponse(List<Breed> breeds) {
+        BreedResponse breedResponse = new BreedResponse();
+        breeds.forEach(breed -> breedResponse.getBreedNames()
+                .add(String.valueOf(breed.getName())));
+        return breedResponse;
+    }
+
+    public List<AnimalResponseForOwner> convertAnimalsToAnimalResponse(List<Animal> animals)
+    {
+        ArrayList<AnimalResponseForOwner> responseForOwners = new ArrayList<>();
+        animals.forEach(each-> responseForOwners.add(convertEntityToResponseForOwner(each)));
+        return responseForOwners;
+    }
+
+    @Override
+    public ColorResponse getColors() {
+        AnimalColor[] values = AnimalColor.values();
+        ColorResponse colorResponse = new ColorResponse();
+        List<AnimalColor> animalColors = Arrays.asList(values);
+        animalColors.forEach(each -> colorResponse.getColors().add(String.valueOf(each)));
+        return colorResponse;
+    }
+
+    @Override
+    public AgeResponse getAges() {
+        AnimalAge[] values = AnimalAge.values();
+        AgeResponse ageResponse = new AgeResponse();
+        List<AnimalAge> animalAges = Arrays.asList(values);
+        animalAges.forEach(each -> ageResponse.getAges().add(String.valueOf(each)));
+        return ageResponse;
+    }
+
+    @Override
+    public GenderResponse getGenders() {
+        AnimalGender[] values = AnimalGender.values();
+        GenderResponse genderResponse = new GenderResponse();
+        List<AnimalGender> animalGenders = Arrays.asList(values);
+        animalGenders.forEach(each -> genderResponse.getGenders().add(String.valueOf(each)));
+        return genderResponse;
+    }
+
     public AnimalDetailResponse convertEntityToDetailResponse(Animal animal) {
         AnimalDetailResponse animalDetailResponse = new AnimalDetailResponse();
         animalDetailResponse.setId(animal.getId());
@@ -173,6 +235,18 @@ public class AnimalServiceImpl implements AnimalService {
         animalDetailResponse.setBreed(String.valueOf(animal.getBreed().getName()));
         animalDetailResponse.setUserResponse(userService.convertEntityToResponse(animal.getUser()));
         return animalDetailResponse;
+    }
+
+    public AnimalResponseForOwner convertEntityToResponseForOwner(Animal animal) {
+        AnimalResponseForOwner animalResponseForOwner = new AnimalResponseForOwner();
+        animalResponseForOwner.setImage(animal.getImages());
+        animalResponseForOwner.setId(animal.getId());
+        animalResponseForOwner.setName(animal.getName());
+        animalResponseForOwner.setAge(String.valueOf(animal.getAge()));
+        animalResponseForOwner.setColor(String.valueOf(animal.getColor()));
+        animalResponseForOwner.setType(String.valueOf(animal.getBreed().getType().getType()));
+        animalResponseForOwner.setBreed(String.valueOf(animal.getBreed().getName()));
+        return animalResponseForOwner;
     }
 
     public AnimalResponse convertEntityToResponse(Animal animal) {

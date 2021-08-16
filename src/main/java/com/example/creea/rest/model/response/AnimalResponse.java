@@ -1,4 +1,4 @@
-package com.example.creea.rest.model;
+package com.example.creea.rest.model.response;
 
 public class AnimalResponse {
     private Long id;

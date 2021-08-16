@@ -1,13 +1,24 @@
-package com.example.creea.rest.model;
+package com.example.creea.rest.model.request;
 
-public class UserResponse {
+public class UserRequest {
+    private String userName;
     private String name;
     private String city;
     private String address;
     private String phone;
     private String email;
+    private String password;
 
-    public UserResponse() {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -49,4 +60,10 @@ public class UserResponse {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+    public String getPassword() {
+       return this.password;
+    }
+
 }

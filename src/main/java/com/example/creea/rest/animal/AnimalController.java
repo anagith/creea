@@ -2,8 +2,8 @@ package com.example.creea.rest.animal;
 
 import com.example.creea.persistance.animal.repo.BreedRepository;
 import com.example.creea.persistance.animal.repo.TypeRepository;
-import com.example.creea.rest.model.AnimalRequest;
-import com.example.creea.rest.model.AnimalDetailResponse;
+import com.example.creea.rest.model.request.AnimalRequest;
+import com.example.creea.rest.model.response.AnimalDetailResponse;
 import com.example.creea.security.CustomUserDetails;
 import com.example.creea.service.AnimalService;
 import org.springframework.http.HttpStatus;
@@ -33,13 +33,14 @@ public class AnimalController {
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+    @RequestMapping(value = "/{id}/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE},
             produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     public ResponseEntity<AnimalDetailResponse> uploadImage(@RequestPart MultipartFile filePart,
                                                             @PathVariable Long id,
                                                             @AuthenticationPrincipal CustomUserDetails customUserDetails) {
         String link = animalService.getLink(filePart);
-        AnimalDetailResponse animalResponse = animalService.convertEntityToDetailResponse(animalService.uploadImage(link, id, customUserDetails));
+        AnimalDetailResponse animalResponse = animalService
+                .convertEntityToDetailResponse(animalService.uploadImage(link, id, customUserDetails));
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
 
@@ -48,7 +49,5 @@ public class AnimalController {
         AnimalDetailResponse animalResponse = animalService.convertEntityToDetailResponse(animalService.get(animalId));
         return new ResponseEntity<>(animalResponse, HttpStatus.OK);
     }
-
-
 
 }
