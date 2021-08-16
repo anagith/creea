@@ -4,7 +4,7 @@ public class AnimalResponse {
     private Long id;
     private String image;
     private String breed;
-    private String  age;
+    private String age;
 
     public AnimalResponse() {
     }

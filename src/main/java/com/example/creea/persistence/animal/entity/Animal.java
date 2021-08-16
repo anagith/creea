@@ -15,12 +15,12 @@ public class Animal {
     private Long id;
     private String name;
 
-    @Column(nullable=false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AnimalAge age;
 
     private AnimalColor color;
-    @Column(nullable=false)
+    @Column(nullable = false)
 
     private AnimalGender gender;
     //@Column(nullable=false)

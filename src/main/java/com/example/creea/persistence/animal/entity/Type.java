@@ -12,6 +12,7 @@ public class Type {
     private Long id;
     @Enumerated(EnumType.STRING)
     private TypeName type;
+
     public Type() {
     }
 

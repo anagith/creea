@@ -55,9 +55,6 @@ public class AnimalCriteriaRepository {
         if (StringUtils.hasText(animalFilterModel.getBreed())) {
             countRoot.join("breed");
         }
-      /*  if (StringUtils.hasText(animalFilterModel.getType())) {
-            countRoot.join("breed").join("type");
-        }*/
 
         countQuery.select(criteriaBuilder.count(countRoot)).where(predicate);
         return entityManager.createQuery(countQuery).getSingleResult();
@@ -104,14 +101,6 @@ public class AnimalCriteriaRepository {
                     criteriaBuilder.equal(breedJoin.get("name"), BreedName.valueOf(animalFilterModel.getBreed())));
         }
 
-        /*if (StringUtils.hasText(animalFilterModel.getType())) {
-            Join<Animal, Breed> breedJoin = animalRoot.join("breed", JoinType.LEFT);
-            Join<Breed, Type> typeJoin = breedJoin.join("type", JoinType.LEFT);
-
-            Expression<String> type = typeJoin.get("type");
-            predicates.add(
-                    criteriaBuilder.equal(type, TypeName.valueOf(animalFilterModel.getType())));
-        }*/
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 

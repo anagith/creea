@@ -2,14 +2,15 @@ package com.example.creea.rest.model.request;
 
 public class AnimalRequest {
     private String name;
-    private String  age;
+    private String age;
     private String colour;
     private String gender;
     private String type;
     private String breed;
     private String image;
 
-    public AnimalRequest(){}
+    public AnimalRequest() {
+    }
 
     public String getName() {
         return name;

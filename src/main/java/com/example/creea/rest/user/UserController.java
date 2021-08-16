@@ -126,11 +126,11 @@ public class UserController {
                 HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/myanimals",method = RequestMethod.GET)
-    public ResponseEntity<UserAnimalsResponse> getUserAnimals(@AuthenticationPrincipal CustomUserDetails customUserDetails){
+    @RequestMapping(value = "/myanimals", method = RequestMethod.GET)
+    public ResponseEntity<UserAnimalsResponse> getUserAnimals(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
         Long userId = customUserDetails.getId();
         UserAnimalsResponse animals = animalService.getAnimals(userId);
-        return new ResponseEntity<>(animals,HttpStatus.OK);
+        return new ResponseEntity<>(animals, HttpStatus.OK);
     }
 
 
